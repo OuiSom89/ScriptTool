@@ -1,1 +1,1 @@
-_G.OpenAIChatGPT = true
+_G.OpenAIChatGPTBolean = true
