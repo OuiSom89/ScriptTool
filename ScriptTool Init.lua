@@ -27,3 +27,5 @@ if isfolder("ScriptTool") then
 else
     InitFiles()
 end
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/logical%20connection.lua"))()
