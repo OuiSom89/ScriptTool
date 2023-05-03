@@ -1,4 +1,4 @@
-local _G.ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
+_G.ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
 local ImageLabel = Instance.new("ImageLabel",_G.ScreenGUII)
 ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
