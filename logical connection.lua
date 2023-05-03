@@ -2,19 +2,6 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 
 local ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
-local OuiSomScreenGui = {
-    x = 1920;
-	y = 981
-}
-
-local ClientScreenGui = {
-	x = ScreenGUII.AbsoluteSize.x;
-	y = ScreenGUII.AbsoluteSize.y
-}
-
-ClientX = ClientScreenGui.x/OuiSomScreenGui.x
-ClientY = ClientScreenGui.y/OuiSomScreenGui.y
-
 local ImageLabel = Instance.new("ImageLabel",ScreenGUII)
 ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
 ImageLabel.BackgroundColor3 = Color3.new(0,0,0)
@@ -44,12 +31,6 @@ SettingsModule.MouseLeave:Connect(function ()
     SettingsModule.Background.StateOverlay.ImageTransparency = 1
 end)
 
-game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and overingSettingsModule and not _G.SettingsModuleBolean then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
-    end
-end)
-
 local ScriptWritter = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
 ScriptWritter.Size = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.MenuIcon.Size
 ScriptWritter.Name = "ScriptWritter"
@@ -73,12 +54,6 @@ ScriptWritter.MouseLeave:Connect(function ()
     ScriptWritter.Background.StateOverlay.ImageTransparency = 1
 end)
 
-game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringScriptWritter and not _G.ScriptWritterBolean then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
-    end
-end)
-
 local OpenAIChatGPT = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
 OpenAIChatGPT.Size = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.MenuIcon.Size
 OpenAIChatGPT.Name = "OpenAIChatGPT"
@@ -100,12 +75,6 @@ end)
 OpenAIChatGPT.MouseLeave:Connect(function ()
     hoveringOpenAIChatGPT = false
     OpenAIChatGPT.Background.StateOverlay.ImageTransparency = 1
-end)
-
-game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
-    end
 end)
 
 local MenuSwap = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
@@ -134,16 +103,24 @@ end)
 local MenuSwapBolean = true
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringMenuSwap and MenuSwapBolean then
-        MenuSwapBolean = false
-        local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
-        print(tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)))
-        if tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)) == -0.03 then
-            local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-1.0750,0)})PositionTween:Play()
-        else
-            local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-0.0356,0)})PositionTween:Play()
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if hoveringMenuSwap and MenuSwapBolean then
+            MenuSwapBolean = false
+            local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
+            print(tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)))
+            if tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)) == -0.03 then
+                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-1.0750,0)})PositionTween:Play()
+            else
+                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-0.0356,0)})PositionTween:Play()
+            end
+            wait(0.5)
+            MenuSwapBolean = true
+        elseif hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
+        elseif hoveringScriptWritter and _G.ScriptWritterBolean then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
+        elseif overingSettingsModule and _G.SettingsModuleBolean then
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
         end
-        wait(0.5)
-        MenuSwapBolean = true
     end
 end)
