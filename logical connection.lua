@@ -2,6 +2,19 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 
 local ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
+local OuiSomScreenGui = {
+    x = 1920;
+	y = 981
+}
+
+local ClientScreenGui = {
+	x = ScreenGUII.AbsoluteSize.x;
+	y = ScreenGUII.AbsoluteSize.y
+}
+
+ClientX = ClientScreenGui.x/OuiSomScreenGui.x
+ClientY = ClientScreenGui.y/OuiSomScreenGui.y
+
 local ImageLabel = Instance.new("ImageLabel",ScreenGUII)
 ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
 ImageLabel.BackgroundColor3 = Color3.new(0,0,0)
@@ -32,7 +45,7 @@ SettingsModule.MouseLeave:Connect(function ()
 end)
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and overingSettingsModule then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and overingSettingsModule and not _G.SettingsModuleBolean then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
     end
 end)
@@ -61,7 +74,7 @@ ScriptWritter.MouseLeave:Connect(function ()
 end)
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringScriptWritter then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringScriptWritter and not _G.ScriptWritterBolean then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
     end
 end)
@@ -90,7 +103,7 @@ OpenAIChatGPT.MouseLeave:Connect(function ()
 end)
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringOpenAIChatGPT then
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
         loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
     end
 end)
