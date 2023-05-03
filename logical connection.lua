@@ -32,12 +32,22 @@ Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.S
 Background.FlashingDot:Destroy()
 Background.Icon.Image = "rbxasset://textures/ui/Settings/MenuBarIcons/GameSettingsTab.png"
 
+local hoveringSettingsModule = false
+
 SettingsModule.MouseEnter:Connect(function ()
+    overingSettingsModule = true
     SettingsModule.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 SettingsModule.MouseLeave:Connect(function ()
+    overingSettingsModule = false
     SettingsModule.Background.StateOverlay.ImageTransparency = 1
+end)
+
+game:GetService('UserInputService').InputBegan:connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and overingSettingsModule then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
+    end
 end)
 
 local ScriptWritter = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
@@ -51,12 +61,22 @@ Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.S
 Background.FlashingDot:Destroy()
 Background.Icon.Image = "rbxasset://"..getsynasset("ScriptTool/Pictures/ScriptIcon.png")
 
+local hoveringScriptWritter = false
+
 ScriptWritter.MouseEnter:Connect(function ()
+    hoveringScriptWritter = true
     ScriptWritter.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 ScriptWritter.MouseLeave:Connect(function ()
+    hoveringScriptWritter = false
     ScriptWritter.Background.StateOverlay.ImageTransparency = 1
+end)
+
+game:GetService('UserInputService').InputBegan:connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringScriptWritter then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
+    end
 end)
 
 local OpenAIChatGPT = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
@@ -70,12 +90,22 @@ Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.O
 Background.FlashingDot:Destroy()
 Background.Icon.Image = "rbxasset://"..getsynasset("ScriptTool/Pictures/OpenAIIcon.png")
 
+local hoveringOpenAIChatGPT = false
+
 OpenAIChatGPT.MouseEnter:Connect(function ()
+    hoveringOpenAIChatGPT = true
     OpenAIChatGPT.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 OpenAIChatGPT.MouseLeave:Connect(function ()
+    hoveringOpenAIChatGPT = false
     OpenAIChatGPT.Background.StateOverlay.ImageTransparency = 1
+end)
+
+game:GetService('UserInputService').InputBegan:connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringOpenAIChatGPT then
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
+    end
 end)
 
 local MenuSwap = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
@@ -89,27 +119,31 @@ Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.M
 Background.FlashingDot:Destroy()
 Background.Icon.Image = "rbxasset://textures/WindControl/ArrowDown.png"
 
-local hovering = false
+local hoveringMenuSwap = false
 
 MenuSwap.MouseEnter:Connect(function ()
-hovering = true
+    hoveringMenuSwap = true
     MenuSwap.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 MenuSwap.MouseLeave:Connect(function ()
-hovering = false
+    hoveringMenuSwap = false
     MenuSwap.Background.StateOverlay.ImageTransparency = 1
 end)
 
+local MenuSwapBolean = true
+
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 and hovering then
-        print("ge")
+    if input.UserInputType == Enum.UserInputType.MouseButton1 and hoveringMenuSwap and MenuSwapBolean then
+        MenuSwapBolean = false
         local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
         print(tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)))
         if tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)) == -0.03 then
-            ImageLabel:TweenPosition(UDim2.new(0,0,-1.0750,0))
+            local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-1.0750,0)})PositionTween:Play()
         else
-            ImageLabel:TweenPosition(UDim2.new(0,0,-0.0356,0))
+            local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-0.0356,0)})PositionTween:Play()
         end
+        wait(0.5)
+        MenuSwapBolean = true
     end
 end)
