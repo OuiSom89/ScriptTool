@@ -1,1 +1,1 @@
-_G.SettingsModule
+_G.SettingsModule = true
