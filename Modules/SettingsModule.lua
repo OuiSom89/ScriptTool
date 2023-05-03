@@ -1,1 +1,1 @@
-_G.SettingsModule = true
+_G.SettingsModuleBolean = true
