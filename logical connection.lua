@@ -2,19 +2,6 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 
 local ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
-local OuiSomScreenGui = {
-    x = 1920;
-	y = 981
-}
-
-local ClientScreenGui = {
-	x = ScreenGUII.AbsoluteSize.x;
-	y = ScreenGUII.AbsoluteSize.y
-}
-
-ClientX = ClientScreenGui.x/OuiSomScreenGui.x
-ClientY = ClientScreenGui.y/OuiSomScreenGui.y
-
 local ImageLabel = Instance.new("ImageLabel",ScreenGUII)
 ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
 ImageLabel.BackgroundColor3 = Color3.new(0,0,0)
