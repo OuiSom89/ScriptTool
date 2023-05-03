@@ -1,8 +1,8 @@
 while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait()end
 
-local ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
+local _G.ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
-local ImageLabel = Instance.new("ImageLabel",ScreenGUII)
+local ImageLabel = Instance.new("ImageLabel",_G.ScreenGUII)
 ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
 ImageLabel.BackgroundColor3 = Color3.new(0,0,0)
 ImageLabel.Position = UDim2.new(0, 0, -1.0750, 0)
