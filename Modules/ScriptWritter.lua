@@ -1,1 +1,1 @@
-_G.ScriptWritter = true
+_G.ScriptWritterBolean = true
