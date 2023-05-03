@@ -1,5 +1,3 @@
-while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetService("Players").LocalPlayer or not game:GetService("Players").LocalPlayer.PlayerGui do wait()end
-
 local _G.ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
 local ImageLabel = Instance.new("ImageLabel",_G.ScreenGUII)
