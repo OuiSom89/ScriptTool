@@ -134,7 +134,9 @@ end)
 local MenuSwapBolean = true
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
+    print("step 1")
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        print("step 2")
         if hoveringMenuSwap and MenuSwapBolean then
             MenuSwapBolean = false
             local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
@@ -149,6 +151,7 @@ game:GetService('UserInputService').InputBegan:connect(function(input)
         elseif hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
         elseif hoveringScriptWritter and _G.ScriptWritterBolean then
+            print("step 3")
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
         elseif overingSettingsModule and _G.SettingsModuleBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
