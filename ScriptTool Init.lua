@@ -19,7 +19,7 @@ local function InitFiles()
     makefolder("ScriptTool/Pictures")
     lib.ImportPicture("ScriptTool/Pictures/OpenAIIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/OpenAIIcon.png"))
     lib.ImportPicture("ScriptTool/Pictures/ScriptIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/_ScriptIcon.png"))
-    lib.ImportPicture("ScriptTool/Pictures/ScriptWritterImage.jpg",Request("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritterImage.jpg"))
+    lib.ImportPicture("ScriptTool/Pictures/ScriptWritterImage.jpg",Request("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritterImage.png"))
     writefile("ScriptTool/V1.txt","")
 end
 
