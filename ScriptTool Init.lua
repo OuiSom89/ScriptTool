@@ -150,6 +150,7 @@ game:GetService('UserInputService').InputBegan:connect(function(input)
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
         elseif _G.hoveringScriptWritter and not _G.ScriptWritterBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
+        elseif _G.hoveringScriptWritter and not _G.ScreenGUII.ScriptWritter.Visible then
         elseif _G.overingSettingsModule and not _G.SettingsModuleBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
         end
