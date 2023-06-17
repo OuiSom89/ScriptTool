@@ -39,7 +39,6 @@ TextBoxScriptWritter.ClearTextOnFocus = false
 TextBoxScriptWritter.MultiLine = true
 
 TextBoxScriptWritter:GetPropertyChangedSignal("Text"):Connect(function()
-    print(NumberLine.Text,"textbound",TextBoxScriptWritter.TextBounds)
     for i = 1, math.floor(TextBoxScriptWritter.TextBounds.Y / 16) do
         NumberLine.Text = NumberLine.Text..tostring(i).."\n"
     end
