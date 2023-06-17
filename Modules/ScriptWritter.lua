@@ -36,11 +36,9 @@ TextBoxScriptWritter.ClearTextOnFocus = false
 TextBoxScriptWritter.MultiLine = true
 
 TextBoxScriptWritter:GetPropertyChangedSignal("Text"):Connect(function()
-    NumberLine.Text = ""
     print(NumberLine.Text,"textbound",TextBoxScriptWritter.TextBounds)
     for i = 1, math.floor(TextBoxScriptWritter.TextBounds.Y / 16) do
         NumberLine.Text = NumberLine.Text..tostring(i).."\n"
-        print(NumberLine.Text,i)
     end
     NumberLine.Size = UDim2.new(0,NumberLine.TextBounds.x,0,NumberLine.TextBounds.y)
     TextBoxScriptWritter.Size = UDim2.new(0,_G.ScreenGUII.AbsoluteSize.X + TextBoxScriptWritter.TextBounds.X,0,TextBoxScriptWritter.TextBounds.Y)
