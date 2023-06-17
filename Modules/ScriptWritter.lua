@@ -1,13 +1,16 @@
 _G.ScriptWritterBolean = true
 
+X = _G.ScreenGUII.AbsoluteSize.x
+Y = _G.ScreenGUII.AbsoluteSize.y
+
 local ScriptWritter = Instance.new("ImageLabel",_G.ScreenGUII)
-ScriptWritter.Size = UDim2.new(1, 0, 1, 50)
+ScriptWritter.Size = UDim2.new(0, X, 0, Y + 50)
 ScriptWritter.BackgroundColor3 = Color3.new(0,0,0)
-ScriptWritter.Position = UDim2.new(0, 0, 0, 0)
+ScriptWritter.Position = UDim2.new(0, 0, 0, -50)
 ScriptWritter.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/ScriptWritterImage.jpg")
 
 local ScrollingFrameScript = Instance.new("ScrollingFrame",ScriptWritter)
-ScrollingFrameScript.Size = UDim2.new(1, 0, 1, 0)
+ScrollingFrameScript.Size = UDim2.new(0, X, 0, Y)
 ScrollingFrameScript.Position = UDim2.new(0, 0, 0, 50)
 ScrollingFrameScript.ScrollBarThickness = 0
 ScrollingFrameScript.CanvasSize = UDim2.new(0,0,0,0)
