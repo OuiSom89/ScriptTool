@@ -1,14 +1,10 @@
+_G.ScriptWritterBolean = true
+
 local ScriptWritter = Instance.new("ImageLabel",_G.ScreenGUII)
-ScriptWritter.Size = UDim2.new(1, 0, 1.0356, 0)
+ScriptWritter.Size = UDim2.new(1, 0, 1, 50)
 ScriptWritter.BackgroundColor3 = Color3.new(0,0,0)
 ScriptWritter.Position = UDim2.new(0, 0, -0.0356, 0)
-ScriptWritter.Image = "rbxasset://"..getsynasset("ScriptTool/Pictures/ScriptWritterImage.jpg")
-
-local MooveScriptWritter = Instance.new("Frame",ScriptWritter)
-MooveScriptWritter.Size = UDim2.new(1,0,0.0356,0)
-MooveScriptWritter.BackgroundColor3 = Color3.new(0,0,0)
-MooveScriptWritter.BackgroundTransparency = 0.6
-MooveScriptWritter.BorderSizePixel = 0
+ScriptWritter.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/ScriptWritterImage.jpg")
 
 local ScrollingFrameScript = Instance.new("ScrollingFrame",ScriptWritter)
 ScrollingFrameScript.Size = UDim2.new(1, 0, 0.965, 0)
@@ -17,9 +13,9 @@ ScrollingFrameScript.ScrollBarThickness = 0
 ScrollingFrameScript.CanvasSize = UDim2.new(0,0,0,0)
 ScrollingFrameScript.BorderSizePixel = 0
 ScrollingFrameScript.BackgroundTransparency = 1
--- code arcade
+
 NumberLine = Instance.new("TextLabel", ScrollingFrameScript)
-NumberLine.Font = Enum.Font.Code
+NumberLine.Font = Enum.Font.Code -- code/arcade
 NumberLine.TextColor3 = Color3.fromRGB(255, 0, 0)
 NumberLine.Text = "1"
 NumberLine.TextSize = 16
