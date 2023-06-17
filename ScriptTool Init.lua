@@ -53,12 +53,12 @@ Background.Icon.Image = "rbxasset://textures/ui/Settings/MenuBarIcons/GameSettin
 local hoveringSettingsModule = false
 
 SettingsModule.MouseEnter:Connect(function ()
-    overingSettingsModule = true
+    _G.overingSettingsModule = true
     SettingsModule.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 SettingsModule.MouseLeave:Connect(function ()
-    overingSettingsModule = false
+    _G.overingSettingsModule = false
     SettingsModule.Background.StateOverlay.ImageTransparency = 1
 end)
 
@@ -76,12 +76,12 @@ Background.Icon.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/Scrip
 local hoveringScriptWritter = false
 
 ScriptWritter.MouseEnter:Connect(function ()
-    hoveringScriptWritter = true
+    _G.hoveringScriptWritter = true
     ScriptWritter.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 ScriptWritter.MouseLeave:Connect(function ()
-    hoveringScriptWritter = false
+    _G.hoveringScriptWritter = false
     ScriptWritter.Background.StateOverlay.ImageTransparency = 1
 end)
 
@@ -99,12 +99,12 @@ Background.Icon.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/OpenA
 local hoveringOpenAIChatGPT = false
 
 OpenAIChatGPT.MouseEnter:Connect(function ()
-    hoveringOpenAIChatGPT = true
+    _G.hoveringOpenAIChatGPT = true
     OpenAIChatGPT.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 OpenAIChatGPT.MouseLeave:Connect(function ()
-    hoveringOpenAIChatGPT = false
+    _G.hoveringOpenAIChatGPT = false
     OpenAIChatGPT.Background.StateOverlay.ImageTransparency = 1
 end)
 
@@ -122,22 +122,20 @@ Background.Icon.Image = "rbxasset://textures/WindControl/ArrowDown.png"
 local hoveringMenuSwap = false
 
 MenuSwap.MouseEnter:Connect(function ()
-    hoveringMenuSwap = true
+    _G.hoveringMenuSwap = true
     MenuSwap.Background.StateOverlay.ImageTransparency = 0.9
 end)
 
 MenuSwap.MouseLeave:Connect(function ()
-    hoveringMenuSwap = false
+    _G.hoveringMenuSwap = false
     MenuSwap.Background.StateOverlay.ImageTransparency = 1
 end)
 
 local MenuSwapBolean = true
 
 game:GetService('UserInputService').InputBegan:connect(function(input)
-    print("step 1")
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        print("step 2")
-        if hoveringMenuSwap and MenuSwapBolean then
+        if _G.hoveringMenuSwap and MenuSwapBolean then
             MenuSwapBolean = false
             local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
             print(tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)))
@@ -148,12 +146,11 @@ game:GetService('UserInputService').InputBegan:connect(function(input)
             end
             wait(0.5)
             MenuSwapBolean = true
-        elseif hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
+        elseif _G.hoveringOpenAIChatGPT and not _G.OpenAIChatGPTBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
-        elseif hoveringScriptWritter and _G.ScriptWritterBolean then
-            print("step 3")
+        elseif _G.hoveringScriptWritter and not _G.ScriptWritterBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
-        elseif overingSettingsModule and _G.SettingsModuleBolean then
+        elseif _G.overingSettingsModule and not _G.SettingsModuleBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
         end
     end
