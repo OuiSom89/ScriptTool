@@ -2,6 +2,8 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/New-file-funciton/main/New-file-funciton.lua"))()
 
+_G.ScriptWritterBolean = false
+
 local function Request(imageUrl)
     local response = request({
         Url = imageUrl,
@@ -18,8 +20,11 @@ local function InitFiles()
     makefolder("ScriptTool")
     makefolder("ScriptTool/Pictures")
     lib.ImportPicture("ScriptTool/Pictures/OpenAIIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/OpenAIIcon.png"))
+    task.wait()
     lib.ImportPicture("ScriptTool/Pictures/ScriptIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/_ScriptIcon.png"))
-    lib.ImportPicture("ScriptTool/Pictures/ScriptWritterImage.jpg",Request("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritterImage.png"))
+    task.wait()
+    lib.ImportPicture("ScriptTool/Pictures/ScriptWritter.png",Request("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritter.png"))
+    task.wait()
     writefile("ScriptTool/V1.txt","")
 end
 
@@ -150,8 +155,8 @@ game:GetService('UserInputService').InputBegan:connect(function(input)
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/OpenAIChatGPT.lua"))()
         elseif _G.hoveringScriptWritter and not _G.ScriptWritterBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/ScriptWritter.lua"))()
-        elseif _G.hoveringScriptWritter and not _G.ScreenGUII.ScriptWritter.Visible then
-            _G.ScreenGUII.ScriptWritter.Visible = true
+        elseif _G.hoveringScriptWritter and not _G.ScriptWritter.Visible then
+            _G.ScriptWritter.Visible = true
         elseif _G.overingSettingsModule and not _G.SettingsModuleBolean then
             loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Modules/SettingsModule.lua"))()
         end
