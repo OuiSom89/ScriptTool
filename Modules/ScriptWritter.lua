@@ -3,12 +3,12 @@ _G.ScriptWritterBolean = true
 local ScriptWritter = Instance.new("ImageLabel",_G.ScreenGUII)
 ScriptWritter.Size = UDim2.new(1, 0, 1, 50)
 ScriptWritter.BackgroundColor3 = Color3.new(0,0,0)
-ScriptWritter.Position = UDim2.new(0, 0, -0.0356, 0)
+ScriptWritter.Position = UDim2.new(0, 0, 0, 0)
 ScriptWritter.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/ScriptWritterImage.jpg")
 
 local ScrollingFrameScript = Instance.new("ScrollingFrame",ScriptWritter)
-ScrollingFrameScript.Size = UDim2.new(1, 0, 0.965, 0)
-ScrollingFrameScript.Position = UDim2.new(0, 0, 0.035, 0)
+ScrollingFrameScript.Size = UDim2.new(1, 0, 1, 0)
+ScrollingFrameScript.Position = UDim2.new(0, 0, 0, 50)
 ScrollingFrameScript.ScrollBarThickness = 0
 ScrollingFrameScript.CanvasSize = UDim2.new(0,0,0,0)
 ScrollingFrameScript.BorderSizePixel = 0
@@ -49,5 +49,13 @@ end)
 ScrollingFrameScript.InputBegan:Connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         TextBoxScriptWritter:CaptureFocus()
+    end
+end)
+
+game:GetService('UserInputService').InputBegan:connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if _G.hoveringScriptWritter then
+            ScriptWritter.Visible = false
+        end
     end
 end)
