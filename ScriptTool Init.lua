@@ -2,8 +2,8 @@ while not game:IsLoaded() or not game:GetService("CoreGui") or not game:GetServi
 
 local lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/OuiSom89/New-file-funciton/main/New-file-funciton.lua"))()
 
-local function SynRequest(imageUrl)
-    local response = syn.request({
+local function Request(imageUrl)
+    local response = request({
         Url = imageUrl,
         Method = "GET"
     })
@@ -17,9 +17,9 @@ local function InitFiles()
     end
     makefolder("ScriptTool")
     makefolder("ScriptTool/Pictures")
-    lib.ImportPicture("ScriptTool/Pictures/OpenAIIcon.png",SynRequest("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/OpenAIIcon.png"))
-    lib.ImportPicture("ScriptTool/Pictures/ScriptIcon.png",SynRequest("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/_ScriptIcon.png"))
-    lib.ImportPicture("ScriptTool/Pictures/ScriptWritterImage.jpg",SynRequest("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritterImage.jpg"))
+    lib.ImportPicture("ScriptTool/Pictures/OpenAIIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/OpenAIIcon.png"))
+    lib.ImportPicture("ScriptTool/Pictures/ScriptIcon.png",Request("https://raw.githubusercontent.com/OuiSom89/ScriptTool/main/Pictures/_ScriptIcon.png"))
+    lib.ImportPicture("ScriptTool/Pictures/ScriptWritterImage.jpg",Request("https://github.com/OuiSom89/ScriptTool/blob/main/Pictures/ScriptWritterImage.jpg"))
     writefile("ScriptTool/V1.txt","")
 end
 
@@ -71,7 +71,7 @@ ScriptWritter.LayoutOrder = 2
 Background = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.MenuIcon.Background:clone()
 Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.ScriptWritter
 Background.FlashingDot:Destroy()
-Background.Icon.Image = "rbxasset://"..getsynasset("ScriptTool/Pictures/ScriptIcon.png")
+Background.Icon.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/ScriptIcon.png")
 
 local hoveringScriptWritter = false
 
@@ -94,7 +94,7 @@ OpenAIChatGPT.LayoutOrder = 2
 Background = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.MenuIcon.Background:clone()
 Background.Parent = game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame.OpenAIChatGPT
 Background.FlashingDot:Destroy()
-Background.Icon.Image = "rbxasset://"..getsynasset("ScriptTool/Pictures/OpenAIIcon.png")
+Background.Icon.Image = "rbxasset://"..getcustomasset("ScriptTool/Pictures/OpenAIIcon.png")
 
 local hoveringOpenAIChatGPT = false
 
