@@ -38,10 +38,13 @@ end
 
 _G.ScreenGUII = Instance.new("ScreenGui", game:GetService("Players").LocalPlayer.PlayerGui)
 
+X = _G.ScreenGUII.AbsoluteSize.x
+Y = _G.ScreenGUII.AbsoluteSize.y
+
 local ImageLabel = Instance.new("ImageLabel",_G.ScreenGUII)
-ImageLabel.Size = UDim2.new(1, 0, 1.0356, 0)
+ImageLabel.Size = UDim2.new(0, X, 0, Y + 50)
 ImageLabel.BackgroundColor3 = Color3.new(0,0,0)
-ImageLabel.Position = UDim2.new(0, 0, -1.0750, 0)
+ImageLabel.Position = UDim2.new(0, 0, 0, -50)
 ImageLabel.Image = "rbxasset://textures/AvatarEditorImages/AvatarEditor.png"
 
 local SettingsModule = Instance.new("Frame", game:GetService("CoreGui").TopBarApp.TopBarFrame.LeftFrame)
@@ -143,11 +146,10 @@ game:GetService('UserInputService').InputBegan:connect(function(input)
         if _G.hoveringMenuSwap and MenuSwapBolean then
             MenuSwapBolean = false
             local rotationTween = game:GetService("TweenService"):Create(MenuSwap.Background.Icon, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = MenuSwap.Background.Icon.Rotation + 180})rotationTween:Play()
-            print(tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)))
-            if tonumber(string.sub(tostring(ImageLabel.Position.Y.Scale),1,5)) == -0.03 then
-                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-1.0750,0)})PositionTween:Play()
+            if ImageLabel.AbsolutePosition.Y == -50 then
+                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,0,-100-Y)})PositionTween:Play()
             else
-                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,-0.0356,0)})PositionTween:Play()
+                local PositionTween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(0.5, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0,0,0,-50)})PositionTween:Play()
             end
             wait(0.5)
             MenuSwapBolean = true
