@@ -57,7 +57,7 @@ end)
 game:GetService('UserInputService').InputBegan:connect(function(input)
     if input.UserInputType == Enum.UserInputType.MouseButton1 then
         if _G.hoveringScriptWritter then
-            ScriptWritter.Visible = false
+            _G.ScriptWritter.Visible = false
         end
     end
 end)
